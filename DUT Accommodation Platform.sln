@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35826.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DUT Accommodation Platform", "DUT Accommodation Platform\DUT Accommodation Platform.csproj", "{D2D5B4A6-F31F-41BA-9DDE-F7396D035D4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DUT Accommodation Platform.Tests", "DUT Accommodation Platform.Tests\DUT Accommodation Platform.Tests.csproj", "{5C2D6100-74B8-407C-A982-FF50E660A43A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2D5B4A6-F31F-41BA-9DDE-F7396D035D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D5B4A6-F31F-41BA-9DDE-F7396D035D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D5B4A6-F31F-41BA-9DDE-F7396D035D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D5B4A6-F31F-41BA-9DDE-F7396D035D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2D6100-74B8-407C-A982-FF50E660A43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2D6100-74B8-407C-A982-FF50E660A43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2D6100-74B8-407C-A982-FF50E660A43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2D6100-74B8-407C-A982-FF50E660A43A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFCEBFB7-241C-4C34-8827-8DC2697BD5A2}
+	EndGlobalSection
+EndGlobal

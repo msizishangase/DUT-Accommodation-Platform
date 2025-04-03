@@ -1,0 +1,74 @@
+﻿@model DUT_Accommodation_Platform.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<div class="auth-container student-theme">
+    <div class="card">
+        <div class="app-branding">
+            <i class="fas fa-user-graduate brand-icon"></i>
+            <h1 class="app-name">DUTCRIBS</h1>
+            <p class="app-tagline">Find your perfect student accommodation</p>
+        </div>
+
+        <div class="form-header">
+            <h2>Welcome back</h2>
+        </div>
+
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "loginForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-envelope input-icon"></i>
+                    @Html.TextBoxFor(m => m.Email, new { @placeholder = " ", @class = "form-control", required = "required", type = "email" })
+                    @Html.LabelFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error-message", id = "emailError" })
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    @Html.PasswordFor(m => m.Password, new { @placeholder = " ", @class = "form-control", required = "required" })
+                    @Html.LabelFor(m => m.Password)
+                    <button type="button" class="password-toggle" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error-message", id = "passwordError" })
+                </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="form-group row">
+                <div class="checkbox-group">
+                    @Html.CheckBoxFor(m => m.RememberMe, new { id = "RememberMe" })
+                    <label for="RememberMe">Remember me</label>
+                </div>
+                <div class="forgot-password">
+                    @Html.ActionLink("Forgot password?", "ForgotPassword")
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-footer">
+                <button type="submit" id="loginButton" class="btn-primary">
+                    <span>Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        }
+
+        <div class="auth-links">
+            @Html.ActionLink("Don't have an account? Register as student", "RegisterStudent", "Account", null, new { @class = "auth-link" })
+            @*<i class="fas fa-user-plus"></i>*@
+
+            @Html.ActionLink("Are you a landlord? Register here", "RegisterLandlord", "Account", null, new { @class = "auth-link" })
+            @*<i class="fas fa-home"></i>*@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+﻿@model DUT_Accommodation_Platform.Models.LandlordRegistrationViewModel
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewBag.Title = "Landlord Registration";
+}
+
+<div class="auth-container landlord-theme">
+    <div class="card">
+        <div class="app-branding">
+            <i class="fas fa-home brand-icon"></i>
+            <h1 class="app-name">DUTCRIBS</h1>
+            <p class="app-tagline">List your property with thousands of students</p>
+        </div>
+
+        <div class="form-header">
+            <h2>Create landlord account</h2>
+        </div>
+
+        <form method="post" id="registrationForm">
+            @Html.AntiForgeryToken()
+
+            <!-- Full Name Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-user input-icon"></i>
+                    @Html.TextBoxFor(m => m.FullName, new { @placeholder = " ", required = "required" })
+                    @Html.LabelFor(m => m.FullName)
+                    <div class="error-message" id="fullNameError"></div>
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-envelope input-icon"></i>
+                    @Html.TextBoxFor(m => m.Email, new { @placeholder = " ", required = "required", type = "email" })
+                    @Html.LabelFor(m => m.Email)
+                    <div class="error-message" id="emailError"></div>
+                </div>
+            </div>
+
+            <!-- Phone Number Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-phone input-icon"></i>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @placeholder = " ", required = "required" })
+                    @Html.LabelFor(m => m.PhoneNumber)
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+            </div>
+
+            <!-- Company Name Field (Optional) -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-building input-icon"></i>
+                    @Html.TextBoxFor(m => m.CompanyName, new { @placeholder = " " })
+                    @Html.LabelFor(m => m.CompanyName)
+                    <div class="error-message" id="companyError"></div>
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    @Html.PasswordFor(m => m.Password, new { @placeholder = " ", required = "required" })
+                    @Html.LabelFor(m => m.Password)
+                    <button type="button" class="password-toggle" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = " ", required = "required" })
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    <button type="button" class="password-toggle" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                    <div class="password-strength-meter">
+                        <div class="strength-indicator" id="strengthIndicator"></div>
+                        <span class="strength-text" id="strengthText">Password strength</span>
+                    </div>
+
+                    <ul class="password-requirements">
+                        <li data-requirement="length">Minimum 8 characters</li>
+                        <li data-requirement="uppercase">Uppercase letter</li>
+                        <li data-requirement="number">Number</li>
+                        <li data-requirement="special">Special character</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Terms Checkbox -->
+            <div class="form-group checkbox-group">
+                @Html.CheckBoxFor(m => m.AcceptTerms, new { id = "AcceptTerms" })
+                <label for="AcceptTerms">I agree to the <a href="@Url.Action("Terms", "Home")">terms and conditions</a></label>
+                <div class="error-message" id="termsError"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-footer">
+                <button type="submit" id="registerButton" class="btn-primary" disabled>
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
+
+        <div class="auth-links">
+            <a href="@Url.Action("Login", "Account")" class="auth-link">
+                <span>Already have an account? Sign in</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </a>
+            <a href="@Url.Action("ForgotPassword", "Account")" class="auth-link">
+                <span>Forgot your password?</span>
+                <i class="fas fa-key"></i>
+            </a>
+        </div>
+    </div>
+</div>

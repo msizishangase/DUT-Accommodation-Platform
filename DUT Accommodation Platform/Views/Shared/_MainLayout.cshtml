@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="container">
+        <div class="nav" id="nav">
+            <div class="logo">
+                <i class="fas fa-bars" id="toggle-icon"></i>
+                <div class="logo-name">
+                    <h2 id="logo">DUTCRIBS</h2>
+                </div>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><i class='bx bxs-dashboard'></i> Dashboard</li>
+                    <li id="active-link"><i class='bx bx-list-ul'></i> Listings</li>
+                    <li><i class='bx bx-buildings'></i> Management</li>
+                    <li><i class='bx bx-support'></i> Support</li>
+                    <li><i class='bx bx-info-circle'></i> About</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-display">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/js/app.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

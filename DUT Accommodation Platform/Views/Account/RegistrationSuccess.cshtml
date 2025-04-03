@@ -1,0 +1,110 @@
+﻿@{
+    Layout = null;
+}
+
+@model DUT_Accommodation_Platform.Models.RegistrationSuccessViewModel
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewBag.Title = "Registration Successful";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/registersuccess.css"/>
+</head>
+<body>
+    <div class="auth-container @(Model.UserType == "Student" ? "student-theme" : "landlord-theme")">
+        <div class="card">
+            <div class="app-branding">
+                <div class="brand-icon">
+                    <i class="fas @(Model.UserType == "Student" ? "fa-user-graduate" : "fa-home")"></i>
+                </div>
+                <h1 class="app-name">DUTCRIBS</h1>
+                <p class="app-tagline">
+                    @(Model.UserType == "Student"
+                        ? "Find your perfect student accommodation"
+                        : "List your property with thousands of students")
+                </p>
+            </div>
+
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="success-title">Registration Successful!</h2>
+                <p class="success-message">
+                    Your account has been successfully created. You will be automatically
+                    redirected in <span class="countdown">@Model.CountdownSeconds</span> seconds...
+                </p>
+
+                <div class="features-container">
+                    <p class="features-title">You'll be able to:</p>
+                    <ul class="features-list">
+                        @if (Model.UserType == "Student")
+                        {
+                            <li class="feature-item">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Browse available accommodations</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Save favorite listings</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Manage your bookings</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="feature-item">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>List your properties</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>Manage bookings</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check feature-icon"></i>
+                                <span>View tenant requests</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="action-container">
+                    <a href="@Url.Action("Login", "Account")" class="btn-primary">
+                        <span>Continue to Login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <p style="font-size: 0.75rem; color: var(--gray-500); margin-top: 1rem;">
+                        If you are not redirected automatically, click the button above
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown timer
+        let seconds = @Model.CountdownSeconds;
+        const countdownElement = document.querySelector('.countdown');
+
+        const countdown = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = seconds;
+
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                window.location.href = '@Url.Action("Login", "Account")';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

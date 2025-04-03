@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DUTCRIBS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/auth.css" rel="stylesheet">
+</head>
+<body>
+    @RenderBody()
+    @Styles.Render("~/Content/auth")
+    @Scripts.Render("~/bundles/auth")
+    <script src="~/js/auth.js"></script>
+    <script src="~/js/registersuccess.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+﻿:root {
+    /* Color Palette */
+    --primary: #6C63FF;
+    --primary-light: #8B85FF;
+    --primary-dark: #4A42D4;
+    --secondary: #FF6584;
+    --success: #4ADE80;
+    --warning: #F59E0B;
+    --error: #F87171;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    /* Animation */
+    --transition: all 0.2s ease;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--gray-50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Theme Variants */
+.student-theme {
+    --theme-color: var(--primary);
+    --theme-gradient: linear-gradient(135deg, var(--primary-light), var(--primary));
+}
+
+.landlord-theme {
+    --theme-color: #4F46E5;
+    --theme-gradient: linear-gradient(135deg, #6366F1, #4F46E5);
+}
+
+/* Card Container */
+.auth-container {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    padding: 2rem;
+    box-shadow: 0 0 10px var(--primary);
+    border-radius: 20px;
+}
+
+/* App Branding */
+.app-branding {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.brand-icon {
+    font-size: 2.5rem;
+    color: var(--theme-color);
+    margin-bottom: 0.5rem;
+}
+
+.app-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.app-tagline {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+
+/* Form Header */
+.form-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+    .form-header h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--gray-500);
+        margin-bottom: 0.5rem;
+    }
+
+    .form-header p {
+        font-size: 0.875rem;
+        color: var(--gray-500);
+    }
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+    .input-container.optional label::after {
+        content: ' (optional)';
+        font-size: 0.75em;
+        color: var(--gray-400);
+    }
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    color: var(--gray-400);
+    font-size: 1rem;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.input-container input {
+    width: 100%;
+    height: 56px;
+    padding: 1rem 3rem 1rem 3rem;
+    font-size: 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    background: white;
+    transition: var(--transition);
+}
+
+    .input-container input:focus {
+        border-color: var(--theme-color);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.1);
+    }
+
+        .input-container input:focus ~ .input-icon {
+            color: var(--theme-color);
+        }
+
+.input-container label {
+    position: absolute;
+    left: 3rem;
+    top: 1.2rem;
+    color: var(--gray-400);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: var(--transition);
+    transform-origin: left center;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    transform: translateY(-1.5rem) scale(0.85);
+    color: var(--theme-color);
+    left: 1rem;
+    background: white;
+    padding: 0 0.5rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 1.05rem;
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 2;
+    font-size: 1rem;
+    transition: color var(--transition);
+    outline: none;
+}
+
+    .password-toggle:hover {
+        color: var(--gray-600);
+    }
+
+    .password-toggle:focus {
+        color: var(--theme-color);
+    }
+
+    .password-toggle i {
+        pointer-events: none;
+        width: 1rem;
+        text-align: center;
+    }
+
+/* Password Strength */
+.password-strength-meter {
+    margin-top: 0.5rem;
+    height: 4px;
+    background: var(--gray-100);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.strength-indicator {
+    height: 100%;
+    width: 0%;
+    transition: var(--transition);
+}
+
+.strength-text {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-top: 0.25rem;
+    display: block;
+    text-align: right;
+}
+
+.password-requirements {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+    .password-requirements li {
+        font-size: 0.75rem;
+        color: var(--gray-400);
+        margin-bottom: 0.25rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .password-requirements li::before {
+            content: "✗";
+            margin-right: 0.5rem;
+            color: var(--error);
+        }
+
+        .password-requirements li.valid {
+            color: var(--gray-600);
+        }
+
+            .password-requirements li.valid::before {
+                content: "✓";
+                color: var(--success);
+            }
+
+/* Form Footer */
+.form-footer {
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: var(--theme-gradient);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        background: var(--gray-300);
+    }
+
+/* Auth Links */
+.auth-links {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.auth-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+    .auth-link:hover {
+        color: var(--theme-color);
+    }
+
+/* Checkbox Styles */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+    .checkbox-group input[type="checkbox"] {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-right: 0.75rem;
+        accent-color: var(--theme-color);
+    }
+
+    .checkbox-group label {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+    }
+
+    .checkbox-group a {
+        color: var(--theme-color);
+        text-decoration: none;
+    }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+/* Error states */
+.input-container.invalid input {
+    border-color: var(--error);
+}
+
+.input-container.invalid .input-icon {
+    color: var(--error);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .card {
+        padding: 1.5rem;
+    }
+
+    .app-name {
+        font-size: 1.5rem;
+    }
+
+    .form-header h2 {
+        font-size: 1.25rem;
+    }
+}
+/* Login Specific Styles */
+.form-group.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+    text-align: right;
+}
+
+    .forgot-password a {
+        color: var(--theme-color);
+        font-size: 0.875rem;
+        text-decoration: none;
+    }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+/* Shake animation for invalid fields */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    20%, 60% {
+        transform: translateX(-5px);
+    }
+
+    40%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+    border-color: var(--error) !important;
+}
+
+/* Error message styling */
+.field-validation-error {
+    display: block;
+    color: var(--error);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    padding-left: 3rem;
+}
+
+.input-validation-error {
+    border-color: var(--error) !important;
+}
+
+    .input-validation-error + label {
+        color: var(--error) !important;
+    }
+
+    .input-validation-error ~ .input-icon {
+        color: var(--error) !important;
+    }

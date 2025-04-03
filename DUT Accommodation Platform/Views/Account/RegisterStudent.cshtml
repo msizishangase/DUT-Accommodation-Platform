@@ -1,0 +1,100 @@
+﻿@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+    ViewBag.Title = "Student Registration";
+    var studentEmailDomain = "dut4life.ac.za";
+    var emailPattern = "^\\d{8}@" + studentEmailDomain.Replace(".", "\\.") + "$";
+}
+
+<div class="auth-container student-theme">
+    <div class="card">
+        <div class="app-branding">
+            <i class="fas fa-user-graduate brand-icon"></i>
+            <h1 class="app-name">DUTCRIBS</h1>
+            <p class="app-tagline">Find your perfect student accommodation</p>
+        </div>
+
+        <div class="form-header">
+            <h2>Open a student account</h2>
+            @*<p>Join thousands of students finding their ideal living space</p>*@
+        </div>
+
+        <form method="post" id="registrationForm">
+            @Html.AntiForgeryToken()
+            <!-- Full Name Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="FullName" name="FullName" placeholder=" " required>
+                    <label for="FullName">Full Name</label>
+                    <div class="error-message" id="fullNameError"></div>
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="Email" name="Email" placeholder=" " required>
+                    <label for="Email">DUT Email</label>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="Password" name="Password" placeholder=" " required>
+                    <label for="Password">Password</label>
+                    <button type="button" class="password-toggle" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder=" " required>
+                    <label for="ConfirmPassword">Confirm Password</label>
+                    <button type="button" class="password-toggle" aria-label="Show password">
+                        <i class="far fa-eye"></i>
+                    </button>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                    <div class="password-strength-meter">
+                        <div class="strength-indicator" id="strengthIndicator"></div>
+                        <span class="strength-text" id="strengthText">Password strength</span>
+                    </div>
+
+                    <ul class="password-requirements">
+                        <li data-requirement="length">Minimum 8 characters</li>
+                        <li data-requirement="uppercase">Uppercase letter</li>
+                        <li data-requirement="number">Number</li>
+                        <li data-requirement="special">Special character</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-footer">
+                <button type="submit" id="registerButton" class="btn-primary" disabled>
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
+
+        <div class="auth-links">
+            <a href="@Url.Action("Login", "Account")" class="auth-link">
+                <span>Already have an account? Sign in</span>
+                <i class="fas fa-sign-in-alt"></i>
+            </a>
+            <a href="@Url.Action("ForgotPassword", "Account")" class="auth-link">
+                <span>Forgot your password?</span>
+                <i class="fas fa-key"></i>
+            </a>
+        </div>
+    </div>
+</div>
